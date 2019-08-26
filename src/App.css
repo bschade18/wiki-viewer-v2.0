@@ -1,33 +1,99 @@
-.App {
+body {
+  background-color: #86b4d9;
+  height: 100vh;
+  width: 100vw;
+}
+
+p {
   text-align: center;
+  margin-top: 15%;
+  font-size: 32px;
+  font-family: Crimson Text;
+  font-weight: bold;
 }
-
-.App-logo {
-  animation: App-logo-spin infinite 20s linear;
-  height: 40vmin;
-  pointer-events: none;
+input {
+  text-align: center;
+  margin-top: 5%;
+  font-size: 20px;
+  font-family: Crimson Text;
+  font-weight: bold;
+  width: 500px;
+  height: 8vh;
+  border: 1px solid gray;
 }
-
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+#input-container {
   display: flex;
-  flex-direction: column;
-  align-items: center;
   justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+}
+#result-container {
+  display: grid;
+  justify-content: center;
+}
+#result-container a {
+  text-decoration: none;
+  color: black;
+  font-family: "Open Sans", sans-serif;
 }
 
-.App-link {
-  color: #61dafb;
+#result1 {
+  margin-top: 0%;
+  background-color: white;
+  width: 500px;
+  height: 8vh;
+  border: 0.5px solid gray;
+  font-size: 20px;
 }
-
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+#result2 {
+  margin-top: -7%;
+  background-color: white;
+  width: 500px;
+  height: 8vh;
+  border: 0.5px solid gray;
+  font-size: 20px;
+}
+#result3 {
+  margin-top: -7%;
+  background-color: white;
+  width: 500px;
+  height: 8vh;
+  border: 0.5px solid gray;
+  font-size: 20px;
+}
+#result4 {
+  margin-top: -7%;
+  background-color: white;
+  width: 500px;
+  height: 8vh;
+  border: 0.5px solid gray;
+  font-size: 20px;
+}
+#result5 {
+  margin-top: -7%;
+  background-color: white;
+  width: 500px;
+  height: 8vh;
+  border: 0.5px solid gray;
+  font-size: 20px;
+}
+#result6 {
+  margin-top: -7%;
+  background-color: white;
+  width: 500px;
+  height: 8vh;
+  border: 0.5px solid gray;
+  font-size: 20px;
+}
+#result1:hover,
+#result2:hover,
+#result3:hover,
+#result4:hover,
+#result5:hover,
+#result6:hover {
+  background-color: #ebf6f9;
+}
+#RandomLink {
+  text-decoration: none;
+}
+#RandomLink:visited {
+  color: black;
 }
