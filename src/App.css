@@ -1,94 +1,57 @@
+* {
+  box-sizing: border-box;
+}
+
 body {
   background-color: #86b4d9;
   height: 100vh;
   width: 100vw;
 }
-
-p {
-  text-align: center;
+.container {
+  display: grid;
+  grid-template-columns: 100vw;
+  justify-items: center;
+}
+.heading {
   margin-top: 15%;
   font-size: 32px;
-  font-family: Crimson Text;
+  font-family: "Crimson Text", sans-serif, serif;
   font-weight: bold;
 }
-input {
+
+.search-box {
   text-align: center;
   margin-top: 5%;
   font-size: 20px;
-  font-family: Crimson Text;
+  font-family: "Crimson Text", sans-serif, serif;
   font-weight: bold;
   width: 500px;
-  height: 8vh;
+  height: 45px;
   border: 1px solid gray;
 }
-#input-container {
-  display: flex;
-  justify-content: center;
-}
-#result-container {
-  display: grid;
-  justify-content: center;
-}
-#result-container a {
-  text-decoration: none;
-  color: black;
-  font-family: "Open Sans", sans-serif;
+
+input[placeholder]::-webkit-input-placeholder {
+  font-family: "Crimson Text", sans-serif, serif;
+  font-weight: 100;
 }
 
-#result1 {
-  margin-top: 0%;
+.result-container a {
+  text-decoration: none;
+  color: black;
+  font-family: "Crimson Text", sans-serif, serif;
+}
+
+.results {
+  margin: 0px;
+  padding-top: 5px;
   background-color: white;
   width: 500px;
-  height: 8vh;
   border: 0.5px solid gray;
   font-size: 20px;
+  padding-left: 5px;
 }
-#result2 {
-  margin-top: -7%;
-  background-color: white;
-  width: 500px;
-  height: 8vh;
-  border: 0.5px solid gray;
-  font-size: 20px;
-}
-#result3 {
-  margin-top: -7%;
-  background-color: white;
-  width: 500px;
-  height: 8vh;
-  border: 0.5px solid gray;
-  font-size: 20px;
-}
-#result4 {
-  margin-top: -7%;
-  background-color: white;
-  width: 500px;
-  height: 8vh;
-  border: 0.5px solid gray;
-  font-size: 20px;
-}
-#result5 {
-  margin-top: -7%;
-  background-color: white;
-  width: 500px;
-  height: 8vh;
-  border: 0.5px solid gray;
-  font-size: 20px;
-}
-#result6 {
-  margin-top: -7%;
-  background-color: white;
-  width: 500px;
-  height: 8vh;
-  border: 0.5px solid gray;
-  font-size: 20px;
-}
-#result1:hover,
-#result2:hover,
-#result3:hover,
-#result4:hover,
-#result5:hover,
-#result6:hover {
+
+.results:hover {
   background-color: #ebf6f9;
 }
 #RandomLink {
@@ -96,4 +59,16 @@ input {
 }
 #RandomLink:visited {
   color: black;
+}
+
+@media only screen and (max-width: 768px) {
+  .search-box {
+    width: 80vw;
+  }
+  .results {
+    width: 80vw;
+  }
+  .heading {
+    text-align: center;
+  }
 }

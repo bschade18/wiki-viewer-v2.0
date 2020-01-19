@@ -62,12 +62,12 @@ class App extends React.Component {
   }
 
   render() {
-    const test1 = this.state.page1.title;
-    const test2 = this.state.page2.title;
-    const test3 = this.state.page3.title;
-    const test4 = this.state.page4.title;
-    const test5 = this.state.page5.title;
-    const test6 = this.state.page6.title;
+    const title1 = this.state.page1.title;
+    const title2 = this.state.page2.title;
+    const title3 = this.state.page3.title;
+    const title4 = this.state.page4.title;
+    const title5 = this.state.page5.title;
+    const title6 = this.state.page6.title;
 
     const link1 = "https://en.wikipedia.org/?curid=" + this.state.page1.pageid;
     const link2 = "https://en.wikipedia.org/?curid=" + this.state.page2.pageid;
@@ -76,26 +76,22 @@ class App extends React.Component {
     const link5 = "https://en.wikipedia.org/?curid=" + this.state.page5.pageid;
     const link6 = "https://en.wikipedia.org/?curid=" + this.state.page6.pageid;
 
-    var value = this.state.search;
-    const encode = encodeURIComponent(this.state.search);
-    const page1 = this.state.page1;
-
     return (
-      <div class="body">
-        <p class="heading">
-          {" "}
-          Click{" "}
+      <div className="container">
+        <p className="heading">
           <a
             id="RandomLink"
             href="https://en.wikipedia.org/wiki/Special:Random"
             target="_blank"
+            rel="noopener noreferrer"
           >
-            here
-          </a>{" "}
-          for a random Wikipedia article
+            {" "}
+            Click here for a random Wikipedia article
+          </a>
         </p>
-        <div id="input-container">
+        <div className="search-container">
           <input
+            className="search-box"
             type="text"
             placeholder="search..."
             value={this.state.value}
@@ -104,24 +100,54 @@ class App extends React.Component {
           />
         </div>
         {this.state.view ? (
-          <div id="result-container">
-            <a href={link1} target="_blank">
-              <p id="result1">{test1}</p>
+          <div className="result-container">
+            <a
+              className="links"
+              href={link1}
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              <p className="results">{title1}</p>
             </a>
-            <a href={link2} target="_blank">
-              <p id="result2">{test2}</p>
+            <a
+              className="links"
+              href={link2}
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              <p className="results">{title2}</p>
             </a>
-            <a href={link3} target="_blank">
-              <p id="result3">{test3}</p>
+            <a
+              className="links"
+              href={link3}
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              <p className="results">{title3}</p>
             </a>
-            <a href={link4} target="_blank">
-              <p id="result4">{test4}</p>
+            <a
+              className="links"
+              href={link4}
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              <p className="results">{title4}</p>
             </a>
-            <a href={link5} target="_blank">
-              <p id="result5">{test5}</p>
+            <a
+              className="links"
+              href={link5}
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              <p className="results">{title5}</p>
             </a>
-            <a href={link6} target="blank">
-              <p id="result6">{test6}</p>
+            <a
+              className="links"
+              href={link6}
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              <p className="results">{title6}</p>
             </a>
           </div>
         ) : null}
