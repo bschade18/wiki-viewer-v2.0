@@ -4,26 +4,24 @@
 
 body {
   background-color: #86b4d9;
-  height: 100vh;
-  width: 100vw;
 }
-.container {
+
+#container {
   display: grid;
-  grid-template-columns: 100vw;
+  grid-template-columns: 100%;
   justify-items: center;
+  margin-top: 10rem;
 }
-.heading {
-  margin-top: 15%;
+#container .heading {
   font-size: 32px;
-  font-family: "Crimson Text", sans-serif, serif;
+  font-family: 'Crimson Text', sans-serif, serif;
   font-weight: bold;
 }
 
-.search-box {
+#search-container .search-box {
   text-align: center;
-  margin-top: 5%;
   font-size: 20px;
-  font-family: "Crimson Text", sans-serif, serif;
+  font-family: 'Crimson Text', sans-serif, serif;
   font-weight: bold;
   width: 500px;
   height: 45px;
@@ -31,19 +29,18 @@ body {
 }
 
 input[placeholder]::-webkit-input-placeholder {
-  font-family: "Crimson Text", sans-serif, serif;
+  font-family: 'Crimson Text', sans-serif, serif;
   font-weight: 100;
 }
 
-.result-container a {
+#result-container a {
   text-decoration: none;
   color: black;
-  font-family: "Crimson Text", sans-serif, serif;
+  font-family: 'Crimson Text', sans-serif, serif;
 }
 
-.results {
-  margin: 0px;
-  padding-top: 5px;
+#result-container .results {
+  padding: 10px 0px;
   background-color: white;
   width: 500px;
   border: 0.5px solid gray;
@@ -51,7 +48,7 @@ input[placeholder]::-webkit-input-placeholder {
   padding-left: 5px;
 }
 
-.results:hover {
+#result-container .results:hover {
   background-color: #ebf6f9;
 }
 #RandomLink {

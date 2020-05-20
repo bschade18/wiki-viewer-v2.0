@@ -1,159 +1,95 @@
-import React from "react";
-import "./App.css";
+import React, { useState } from 'react';
+import './App.css';
 
-const enterKey = 13;
+const App = () => {
+  const [pages, setPages] = useState([]);
+  const [search, setSearch] = useState('');
+  const [view, setView] = useState(false);
 
-class App extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      page1: {},
-      page2: {},
-      page3: {},
-      page4: {},
-      page5: {},
-      page6: {},
-      search: "",
-      view: false
-    };
-    this.handleChange = this.handleChange.bind(this);
-    this.handleSubmit = this.handleSubmit.bind(this);
-    this.handleKeyDown = this.handleKeyDown.bind(this);
-  }
+  const handleKeyDown = (e) => {
+    const enterKey = 13;
 
-  handleKeyDown(event) {
-    if (event.keyCode === enterKey) {
-      this.handleSubmit();
+    if (e.keyCode === enterKey) {
+      handleSubmit();
     }
-  }
+  };
 
-  handleSubmit(event) {
-    const encode = encodeURIComponent(this.state.search);
+  const handleSubmit = () => {
     fetch(
-      `https://en.wikipedia.org/w/api.php?action=query&origin=*&format=json&list=search&srlimit=6&srsearch=${encode}`
+      `https://en.wikipedia.org/w/api.php?action=query&origin=*&format=json&list=search&srlimit=6&srsearch=${search}`
     )
-      .then(response => response.json())
-      .then(data =>
-        this.setState({
-          page1: data.query.search[0],
-          page2: data.query.search[1],
-          page3: data.query.search[2],
-          page4: data.query.search[3],
-          page5: data.query.search[4],
-          page6: data.query.search[5],
-          view: true
-        })
-      )
-      .catch(error => console.log(error));
-  }
+      .then((res) => res.json())
+      .then((data) => {
+        setPages(data.query.search);
+        setView(true);
+      })
+      .catch((error) => console.log(error));
+  };
 
-  handleChange(event) {
-    const { value } = event.target;
-    this.setState({
-      search: value
-    });
+  const handleChange = (e) => {
+    const { value } = e.target;
+
+    setSearch(value);
+
     setTimeout(() => {
-      if (this.state.search === "") {
-        this.setState({
-          view: false
-        });
+      if (value === '') {
+        setView(false);
       }
     }, 100);
-  }
+  };
 
-  render() {
-    const title1 = this.state.page1.title;
-    const title2 = this.state.page2.title;
-    const title3 = this.state.page3.title;
-    const title4 = this.state.page4.title;
-    const title5 = this.state.page5.title;
-    const title6 = this.state.page6.title;
-
-    const link1 = "https://en.wikipedia.org/?curid=" + this.state.page1.pageid;
-    const link2 = "https://en.wikipedia.org/?curid=" + this.state.page2.pageid;
-    const link3 = "https://en.wikipedia.org/?curid=" + this.state.page3.pageid;
-    const link4 = "https://en.wikipedia.org/?curid=" + this.state.page4.pageid;
-    const link5 = "https://en.wikipedia.org/?curid=" + this.state.page5.pageid;
-    const link6 = "https://en.wikipedia.org/?curid=" + this.state.page6.pageid;
+  const renderItem = (i) => {
+    const wikiBaseUrl = 'https://en.wikipedia.org/?curid=';
 
     return (
-      <div className="container">
-        <p className="heading">
-          <a
-            id="RandomLink"
-            href="https://en.wikipedia.org/wiki/Special:Random"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            {" "}
-            Click here for a random Wikipedia article
-          </a>
-        </p>
-        <div className="search-container">
-          <input
-            className="search-box"
-            type="text"
-            placeholder="search..."
-            value={this.state.value}
-            onChange={this.handleChange}
-            onKeyDown={this.handleKeyDown}
-          />
-        </div>
-        {this.state.view ? (
-          <div className="result-container">
-            <a
-              className="links"
-              href={link1}
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              <p className="results">{title1}</p>
-            </a>
-            <a
-              className="links"
-              href={link2}
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              <p className="results">{title2}</p>
-            </a>
-            <a
-              className="links"
-              href={link3}
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              <p className="results">{title3}</p>
-            </a>
-            <a
-              className="links"
-              href={link4}
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              <p className="results">{title4}</p>
-            </a>
-            <a
-              className="links"
-              href={link5}
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              <p className="results">{title5}</p>
-            </a>
-            <a
-              className="links"
-              href={link6}
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              <p className="results">{title6}</p>
-            </a>
-          </div>
-        ) : null}
+      <div>
+        <a
+          className="links"
+          href={`${wikiBaseUrl} + ${pages[i].pageid}`}
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          <div className="results">{pages[i].title}</div>
+        </a>
       </div>
     );
-  }
-}
+  };
+
+  return (
+    <div id="container">
+      <p className="heading">
+        <a
+          id="RandomLink"
+          href="https://en.wikipedia.org/wiki/Special:Random"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          {' '}
+          Click here for a random Wikipedia article
+        </a>
+      </p>
+      <div id="search-container">
+        <input
+          className="search-box"
+          type="text"
+          placeholder="search..."
+          value={search}
+          onChange={handleChange}
+          onKeyDown={handleKeyDown}
+        />
+      </div>
+      {view && (
+        <div id="result-container">
+          {renderItem(0)}
+          {renderItem(1)}
+          {renderItem(2)}
+          {renderItem(3)}
+          {renderItem(4)}
+          {renderItem(5)}
+        </div>
+      )}
+    </div>
+  );
+};
 
 export default App;
